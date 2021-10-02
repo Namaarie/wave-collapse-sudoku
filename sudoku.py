@@ -132,17 +132,18 @@ class Sudoku():
 		return size
 
 	def RecursiveSolve(self, board):
-		boardCopy = copy.deepcopy(board)
-		if(self.__showProgress):
+		if self.__showProgress:
 			self.PrintBoard()
 		minTile = self.GetMinEntropy()
+		# base case, if all tiles are solved
 		if minTile == None:
-			return boardCopy
+			return
+		# no need to guess if only 1 possibility
 		if minTile.GetEntropy() == 1:
 			minTile.Collapse()
 			self.Collapse(minTile)
 			if self.IsSolved():
-				return boardCopy
+				return
 		else:
 			# need to guess
 			for i in range(minTile.GetEntropy()):
@@ -150,7 +151,7 @@ class Sudoku():
 				self.Collapse(minTile)
 				self.RecursiveSolve(self.__board)
 				if self.IsSolved():
-					return boardCopy
+					return
 
 	def Solve(self, showProgress=False, recursive=True):
 		self.__showProgress = showProgress
