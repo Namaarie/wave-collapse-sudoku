@@ -295,7 +295,7 @@ def Help():
 	
 def main():
 	sudoku = Sudoku()
-	f = open("sudoku.csv", "r")
+	f = open("hardsudoku.csv", "r")
 	try:
 		opts, args = getopt.getopt(sys.argv[1:], "hbspc:")
 	except getopt.GetoptError:
