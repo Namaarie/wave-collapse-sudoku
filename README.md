@@ -1,2 +1,2 @@
-# sudoku
+# wave collapse sudoku
  
